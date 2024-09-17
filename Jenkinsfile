@@ -1,33 +1,41 @@
 pipeline {
     agent any
-
     tools {
         maven 'Maven_3.9.9'  // Adjust based on your Maven installation
     }
-
     stages {
-        stage('Checkout') {
+	    stage('Checkout') {
             steps {
                 git 'https://github.com/ganesh999999/JenkinsDemoRepo.git'
             }
         }
-
         stage('Build') {
             steps {
-                sh 'mvn clean install'
                 script {
                     if (isUnix()) {
-                        // For Unix/Linux environments
-                        sh 'java -jar JenkinsDemo.jar'
+                        // For Linux/Unix environments
+                        sh 'mvn clean install'
                     } else {
                         // For Windows environments
-                        bat 'java -jar JenkinsDemo.jar'
+                        bat 'mvn clean install'
                     }
                 }
             }
         }
 
-        stage('Test') {
+        stage('Run Application') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        // Assuming the JAR file is located in the target directory after mvn install
+                        sh 'java -jar target/JenkinsDemo.jar'
+                    } else {
+                        bat 'java -jar target\\JenkinsDemo.jar'
+                    }
+                }
+            }
+        }
+		stage('Test') {
             steps {
                 sh 'mvn test'
             }
