@@ -15,6 +15,15 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install'
+                script {
+                    if (isUnix()) {
+                        // For Unix/Linux environments
+                        sh 'java -jar JenkinsDemo.jar'
+                    } else {
+                        // For Windows environments
+                        bat 'java -jar JenkinsDemo.jar'
+                    }
+                }
             }
         }
 
