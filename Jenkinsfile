@@ -13,11 +13,11 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        // For Linux/Unix environments
                         sh 'mvn clean install'
+                        sh 'ls -la target/'  // List files to verify the JAR file exists
                     } else {
-                        // For Windows environments
                         bat 'mvn clean install'
+                        bat 'dir target\\'  // List files to verify the JAR file exists
                     }
                 }
             }
