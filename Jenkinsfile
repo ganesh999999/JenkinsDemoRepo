@@ -41,7 +41,7 @@ pipeline {
                     } else {
                         //bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                         //bat 'start /B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
-                        bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        bat 'start -B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     }
                     }
                 }
