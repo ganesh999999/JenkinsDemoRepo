@@ -35,7 +35,8 @@ pipeline {
                         // Assuming the JAR file is located in the target directory after mvn install
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     } else {
-                        bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        //bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        bat 'start java -jar C:\\Users\Ganesh Adepu\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\JenkinsDemoPL@2\\target\\JenkinsDemo-0.0.1-SNAPSHOT.jar''
                     }
                     }
                 }
