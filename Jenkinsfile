@@ -22,7 +22,11 @@ pipeline {
                 }
             }
         }
-
+   stage('Verify JAR Existence') {
+       steps {
+        bat 'dir target'
+       }
+   }
         stage('Run Application') {
             steps {
                 script {
@@ -31,7 +35,7 @@ pipeline {
                         // Assuming the JAR file is located in the target directory after mvn install
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     } else {
-                        bat 'start java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     }
                     }
                 }
