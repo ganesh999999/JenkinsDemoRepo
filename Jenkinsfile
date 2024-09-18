@@ -43,7 +43,7 @@ pipeline {
                         bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar &'
                         //bat 'start /B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                         //bat 'start /B java -jar "C:\\Users\\Ganesh Adepu\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\JenkinsDemoPL@2\\target\\JenkinsDemo-0.0.1-SNAPSHOT.jar"'
-                        bat "start \"\" cmd.exe /C \"java -jar ${jarPath} > application.log 2>&1 & exit\""
+                        bat "start \"\" cmd.exe /K \"timeout /t 60 & java -jar ${jarPath} > application.log 2>&1\""
                     }
                     //}
                 }
