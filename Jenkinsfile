@@ -11,6 +11,11 @@ pipeline {
         }
         stage('Build') {
             steps {
+				
+                ws('C:/JenkinsWorkspaces/JenkinsDemoPL') {
+                    sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                }
+            
                 script {
                     if (isUnix()) {
                         sh 'mvn clean install'
