@@ -11,9 +11,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-				
-                ws('C:/JenkinsWorkspaces/JenkinsDemoPL') {
-                    sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
+                    bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                 }
             
                 script {
@@ -41,7 +40,7 @@ pipeline {
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     } else {
                         //bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
-                        bat 'start /B java -jar "C:\\Users\\Ganesh Adepu\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\JenkinsDemoPL@2\\target\\JenkinsDemo-0.0.1-SNAPSHOT.jar" &'
+                        bat 'start /B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     }
                     }
                 }
