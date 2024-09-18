@@ -12,8 +12,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-					 ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
-						echo "custom workspace created"
+					 //ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
+						//echo "custom workspace created"
 					 
                     if (isUnix()) {
                         sh 'mvn clean install'
@@ -22,7 +22,7 @@ pipeline {
                         bat 'mvn clean install'
                         bat 'dir target\\'  // List files to verify the JAR file exists
                     }
-                    }
+                    //}
                 }
             }
         }
@@ -40,7 +40,8 @@ pipeline {
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     } else {
                         //bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
-                        bat 'start /B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        //bat 'start /B java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
                     }
                     }
                 }
