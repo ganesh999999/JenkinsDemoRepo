@@ -14,7 +14,7 @@ pipeline {
                 script {
 					 ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
 						echo "custom workspace created"
-					 }
+					 
                     if (isUnix()) {
                         sh 'mvn clean install'
                         sh 'ls -la target/'  // List files to verify the JAR file exists
@@ -22,7 +22,7 @@ pipeline {
                         bat 'mvn clean install'
                         bat 'dir target\\'  // List files to verify the JAR file exists
                     }
-                    
+                    }
                 }
             }
         }
