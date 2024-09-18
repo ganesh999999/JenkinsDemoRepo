@@ -34,7 +34,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 script {
-					timeout(time: 15, unit: 'MINUTES') {
+					timeout(time: 30, unit: 'MINUTES') {
                     if (isUnix()) {
                         // Assuming the JAR file is located in the target directory after mvn install
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
