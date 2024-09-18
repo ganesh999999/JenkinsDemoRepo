@@ -11,17 +11,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
-                    bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
-                }
-            
                 script {
+					 ws('C:\\JenkinsWorkspaces\\JenkinsDemoPL') {
                     if (isUnix()) {
                         sh 'mvn clean install'
                         sh 'ls -la target/'  // List files to verify the JAR file exists
                     } else {
                         bat 'mvn clean install'
                         bat 'dir target\\'  // List files to verify the JAR file exists
+                    }
                     }
                 }
             }
