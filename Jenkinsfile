@@ -27,10 +27,16 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
+						 timeout(time: 10, unit: 'MINUTES') {
+                        sh 'echo Starting application...'
                         // Assuming the JAR file is located in the target directory after mvn install
                         sh 'java -jar target/JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        }
                     } else {
+						 timeout(time: 10, unit: 'MINUTES') {
+                        sh 'echo Starting application...'
                         bat 'java -jar target\\JenkinsDemo-0.0.1-SNAPSHOT.jar'
+                        }
                     }
                 }
             }
@@ -43,7 +49,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'mvn spring-boot:run'
+				 timeout(time: 15, unit: 'MINUTES') {
+                       sh 'echo Deploying application...'
+                       sh 'mvn spring-boot:run'
+                }
             }
         }
     }
